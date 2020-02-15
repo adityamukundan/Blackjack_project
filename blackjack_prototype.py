@@ -10,7 +10,7 @@ class cards_deck():
         for i in range(0,2):
             out1.append(random.choice(self.cards))
         return out1
-class player_game(self,chips,bet,cards*):
+
 
 def player_input():
     total = 0
@@ -20,4 +20,6 @@ def player_input():
     for x in player_card:
         total = total + input_1.cards_value[x]
     print('the cards are {} and total card value is {}'.format(player_card,total))
+
 player_input()
+print('this is also a change')
