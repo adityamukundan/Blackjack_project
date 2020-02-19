@@ -19,17 +19,7 @@ class cards_deck():
         return card_single
 
 
-def player_input():
-    total = 0
-    input_1 = cards_deck()
-    player_card = []
-    player_card.append(input_1.generate_card())
-    print(player_card)
-    for x in player_card:
-        for y in x:
-            total = total + input_1.cards_value[y]
-    print('the cards are {} and total card value is {}'.format(player_card,total))
-    print('edited')
+
 
 def play_game():
     input_1 = cards_deck()
