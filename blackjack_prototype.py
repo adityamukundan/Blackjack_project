@@ -50,3 +50,5 @@ def play_game():
             print('thanks for playing')
             break
 play_game()
+
+#class with dealer and game logic to be added with functions .Separate objects to be created for the player and for the dealer at which point the winner is to be decided and the bet money will be calculated with 3:2 ratio
