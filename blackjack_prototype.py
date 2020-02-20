@@ -69,7 +69,10 @@ def play_game():
                dealer_card_value = dealer_game.card_value(dealer_card)
                if player_card_value == 21:
                    money_won_bet = bet * (150 / 100)
-                   print('you have won the game! and the money is %d' % money_won_bet)
+                   print('Blackjack! you have won %d' % money_won_bet)
+                   break
+               elif dealer_card_value == 21:
+                   print('Dealer wins you lose all bet ')
                    break
                elif player_card_value > 21:
                    print('bust!')
@@ -85,13 +88,15 @@ def play_game():
                elif player_card_value == dealer_card_value == 21:
                    print('this game is a tie')
                    break
-           choice = input('Would you like to Play again [y/n]?:')
+               else:
+                   money_won = bet * (150 / 100)
+                   print('you have won the game and your money is %d' % money_won)
+                   break
+           choice = input('Would you like to Play again [y/n]?:\n')
            if choice == 'y' or 'yes' or 'Y':
                continue
            elif choice == "n" or "N":
                print('Thanks for playing')
-               break
-           else:
                break
    except ValueError as msg:
        print('please enter a number and try again')
