@@ -39,12 +39,12 @@ def play_game():
        input_1.card_value(player_card)
        bet = int(input('Please place your bet:\n'))
        while i > 1:
-           choice = input('do you want to continue ?\n')
-           if choice == 'hit':
+           choice = input('what do you want to do ? h for Hit and s for stand  ?\n')
+           if choice == 'h':
                input_1 = cards_deck()
                player_card.append(input_1.generate_card_single())
                input_1.card_value(player_card)
-           elif choice == 'stand':
+           elif choice == 's':
                input_1.card_value(player_card)
            else:
                print('thanks for playing')
