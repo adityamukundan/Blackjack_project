@@ -28,7 +28,6 @@ class cards_deck():
         for o in card:
             for z in o:
                 new_total = new_total + cards_value[z]
-        # print('the cards are {} and total card value is {}'.format(card, new_total))
         return new_total
 
 
@@ -93,11 +92,11 @@ def play_game():
                    print('you have won the game and your money is %d' % money_won)
                    break
            choice = input('Would you like to Play again [y/n]?:\n')
-           if choice == 'y' or 'yes' or 'Y':
-               continue
-           elif choice == "n" or "N":
-               print('Thanks for playing')
+           if choice == 'n' or  'N':
+               print('thanks for playing')
                break
+           else:
+               continue
    except ValueError as msg:
        print('please enter a number and try again')
    except Exception as msg1:
