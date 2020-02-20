@@ -28,7 +28,7 @@ class cards_deck():
         for o in card:
             for z in o:
                 new_total = new_total + cards_value[z]
-        print('the cards are {} and total card value is {}'.format(card, new_total))
+        # print('the cards are {} and total card value is {}'.format(card, new_total))
         return new_total
 
 
@@ -37,47 +37,62 @@ def play_game():
    try:
        player_game = cards_deck()
        dealer_game = cards_deck()
-       round = 0
        i = 2
-       player_card = []
-       dealer_card = []
-       dealer_card.append(dealer_game.generate_card())
-       dealer_game.card_value(dealer_card)
-       player_card.append(player_game.generate_card())
-       player_game.card_value(player_card)
-       bet = int(input('Please place your bet:\n'))
-       while i > 1:
-           choice = input('what do you want to do ? \nh for Hit and s for stand \npress any other key to quit\n')
-           if choice == 'h':
-               player_card.append(player_game.generate_card_single())
-               player_game.card_value(player_card)
-               dealer_game.card_value(dealer_card)
-           elif choice == 's':
-               player_game.card_value(player_card)
-           else:
-               print('thanks for playing')
-               break
-           player_card_value = player_game.card_value(player_card)
-           dealer_card_value = dealer_game.card_value(dealer_card)
-           if round == 1:
+       j = 2
+       while j > 1:
+           player_card = []
+           dealer_card = []
+           dealer_card.append(dealer_game.generate_card())
+           dealer_game.card_value(dealer_card)
+           player_card.append(player_game.generate_card())
+           player_game.card_value(player_card)
+           bet = int(input('Please place your bet:\n'))
+           while i > 1:
+               print("The Player's cards are :{} \nThe Dealers cards are:{} ".format(player_card, dealer_card))
+               choice = input('what do you want to do ? \nh for Hit and s for stand \npress any other key to quit\n')
+               if choice == 'h':
+                   player_card.append(player_game.generate_card_single())
+                   player_game.card_value(player_card)
+                   dealer_game.card_value(dealer_card)
+                   print("The Player's cards are :{} \nThe Dealers cards are:{} ".format(player_card, dealer_card))
+               elif choice == 's':
+                   player_game.card_value(player_card)
+                   print("The Player's cards are :{} \nThe Dealers cards are:{} ".format(player_card, dealer_card))
+               else:
+                   print('please press a valid input')
+                   continue
+               dealer_card_value = dealer_game.card_value(dealer_card)
+               if dealer_card_value < 21:
+                   dealer_card.append(dealer_game.generate_card_single())
+               print("The Player's cards are :{} \nThe Dealers cards are:{} ".format(player_card, dealer_card))
+               player_card_value = player_game.card_value(player_card)
+               dealer_card_value = dealer_game.card_value(dealer_card)
+               if player_card_value == 21:
+                   money_won_bet = bet * (150 / 100)
+                   print('you have won the game! and the money is %d' % money_won_bet)
+                   break
+               elif player_card_value > 21:
+                   print('bust!')
+                   break
+               elif dealer_card_value > 21:
+                   money_dealer_bust = bet * (150 / 100)
+                   print("you won the game because dealer went bust and your money is %d " % money_dealer_bust)
+                   break
                if player_card_value > dealer_card_value:
-                   print('you have won the game')
+                   money_won = bet * (150 / 100)
+                   print('you have won the game and your money is %d' % money_won)
                    break
                elif player_card_value == dealer_card_value == 21:
                    print('this game is a tie')
                    break
-               else:
-                    print("the dealer wins ,you lose ")
-                    break
-           if player_card_value == 21:
-               print('you have won the game!')
+           choice = input('Would you like to Play again [y/n]?:')
+           if choice == 'y' or 'yes' or 'Y':
+               continue
+           elif choice == "n" or "N":
+               print('Thanks for playing')
                break
-           if player_card_value > 21:
-               print('bust!')
+           else:
                break
-           if dealer_card_value < 21:
-               dealer_card.append(dealer_game.generate_card_single())
-           round += 1
    except ValueError as msg:
        print('please enter a number and try again')
    except Exception as msg1:
