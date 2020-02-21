@@ -83,12 +83,14 @@ def play_game():
                    money_won = bet * (150 / 100)
                    print('you have won the game and your money is %d' % money_won)
                    break
-               elif player_card_value == dealer_card_value == 21:
+               elif player_card_value == 21 and  dealer_card_value == 21:
+                   print('this game is a tie')
+                   break
+               elif player_card_value == dealer_card_value:
                    print('this game is a tie')
                    break
                else:
-                   money_won = bet * (150 / 100)
-                   print('you have won the game and your money is %d' % money_won)
+                   print('dealer won the game ' )
                    break
            choice = input('Would you like to Play again [y/n]?:\n')
            if choice == "y" or  choice == "Y":
